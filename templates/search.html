@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SKYPROGRAM</title>
+    <link href="../static/css/style.css" rel="stylesheet">
+</head>
+<div CLASS="container">SKYPROGRAM</div>
+<body>
+<header>
+
+</header>
+
+<main class="container">
+    {% if found_posts != [] %}
+        <section>
+            {% for post in found_posts[0:10] %}
+                <div>
+                    <div>
+                        <a href="">
+                            <div>
+                                <img src="{{ post['poster_avatar'] }}" width="47" alt="">
+                            </div>
+
+                            <span>
+                        {{ post['poster_name'] }}
+                    </span>
+                        </a>
+                    </div>
+                    {#  Блок под картинку поста  #}
+                    <a href=""> <img src="{{ post['pic'] }}" alt="" width="348"> </a>
+                    <p> {{ post['content'][0:30] }}... </p>
+                    <div>
+                        <div>
+                            <img src="../static/img/eye.png" alt="" width="26">
+                            <span>{{ post['views_count'] }}</span>
+                        </div>
+                    </div>
+                    <div>
+                        <a href="/posts/{{ post['pk'] }}" class="post_details"> Подробнее </a>
+                        <button type="button" class="button_bookmarks">
+                            <img src="../static/img/bookmark.png" alt="" width="24">
+                        </button>
+                    </div>
+                    <hr>
+                </div>
+            {% endfor %}
+        </section>
+    {% else %}
+        <a>Ничего не найдено</a>
+    {% endif %}
+</main>
+
+
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SKYPROGRAM post</title>
+    <link href="../static/css/style.css" rel="stylesheet">
+</head>
+
+<body>
+<a href="#" onclick="history.back()">Главная страница</a>
+<section class="container">
+    <div>
+        <img src="{{ post['poster_avatar'] }}" width="47">
+        {{ post['poster_name'] }}
+    </div>
+    <a>{{ post['content'] }}</a>
+    <form action="/bookmarks" method="get">
+        <img src="../static/img/eye.png" width="27">
+        <a>{{ post['views_count'] }}</a>
+        <button class="button_bookmarks">
+            <img src="../static/img/bookmark.png" width="27">
+        </button>
+    </form>
+    <hr>
+    <div>
+        {{ count_comments }} комментария:
+        <div>
+            {% for comment in comments %}
+                <span>{{ comment['commenter_name'] }}:</span>
+                <span>{{ comment['comment'] }}</span>
+            {% endfor %}
+        </div>
+
+
+    </div>
+</section>
+</body>
+
+</html>
