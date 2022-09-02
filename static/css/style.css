@@ -22,7 +22,9 @@ header {
     font-weight: bolder;
 }
 
-
+.ava {
+    border-radius: 25px;
+}
 
 .container {
     padding-left: 30px;

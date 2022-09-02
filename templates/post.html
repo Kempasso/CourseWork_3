@@ -9,16 +9,16 @@
 </head>
 
 <body>
-<a href="#" onclick="history.back()">Главная страница</a>
+<a href="/">Главная страница</a>
 <section class="container">
     <div>
-        <img src="{{ post['poster_avatar'] }}" width="47">
-        {{ post['poster_name'] }}
+        <img src="{{ post.poster_avatar }}" width="47">
+        {{ post.poster_name }}
     </div>
-    <a>{{ post['content'] }}</a>
+    <a>{{ post.content }}</a>
     <form action="/bookmarks" method="get">
         <img src="../static/img/eye.png" width="27">
-        <a>{{ post['views_count'] }}</a>
+        <a>{{ post.views_count }}</a>
         <button class="button_bookmarks">
             <img src="../static/img/bookmark.png" width="27">
         </button>

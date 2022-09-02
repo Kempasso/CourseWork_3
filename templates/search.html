@@ -21,25 +21,25 @@
                     <div>
                         <a href="">
                             <div>
-                                <img src="{{ post['poster_avatar'] }}" width="47" alt="">
+                                <img src="{{ post.poster_avatar }}" width="47" alt="">
                             </div>
 
                             <span>
-                        {{ post['poster_name'] }}
+                        {{ post.poster_name }}
                     </span>
                         </a>
                     </div>
                     {#  Блок под картинку поста  #}
-                    <a href=""> <img src="{{ post['pic'] }}" alt="" width="348"> </a>
-                    <p> {{ post['content'][0:30] }}... </p>
+                    <a href=""> <img src="{{ post.pic }}" alt="" width="348"> </a>
+                    <p> {{ post.content[0:30] }}... </p>
                     <div>
                         <div>
                             <img src="../static/img/eye.png" alt="" width="26">
-                            <span>{{ post['views_count'] }}</span>
+                            <span>{{ post.views_count }}</span>
                         </div>
                     </div>
                     <div>
-                        <a href="/posts/{{ post['pk'] }}" class="post_details"> Подробнее </a>
+                        <a href="/posts/{{ post.pk }}" class="post_details"> Подробнее </a>
                         <button type="button" class="button_bookmarks">
                             <img src="../static/img/bookmark.png" alt="" width="24">
                         </button>
