@@ -15,6 +15,11 @@ header {
 
 /* Classes */
 
+.search_logo {
+   width: 40px;
+
+}
+
 .logo {
     text-decoration: unset;
     color: black;

@@ -1,12 +1,14 @@
-from flask import Flask, request, redirect
+from flask import request, redirect, Flask
 
 from api.views import *
-from bookmarks import Bookmarks
+from classes import Bookmarks
 from config import *
-from posts import Posts
+from classes import Posts
 from utils import *
 
 app = Flask(__name__)
+
+
 app.register_blueprint(api_blueprint, url_prefix='/api')
 
 all_posts = get_all_posts(POSTS_PATH)
@@ -65,6 +67,6 @@ def page_not_found(e):
 def internal_error(error):
     return render_template('500.html'), 500
 
-#
-# if __name__ == "__main__":
-app.run()
+
+if __name__ == "__main__":
+    app.run()
