@@ -6,7 +6,9 @@ body {
     color: #000;
     background: #fff
 }
-
+hr {
+    width: 400px;
+}
 div {
     width: 500px;
     margin: auto;
@@ -42,8 +44,8 @@ a {
 }
 
 .comments {
-    position: relative;
-    left: 70px;
+    width: 400px;
+    margin: auto;
 }
 
 .post_img {
@@ -106,12 +108,6 @@ a {
     border-radius: 25px;
 }
 
-/*.container {*/
-/*    padding-left: 30px;*/
-/*    padding-right: 30px;*/
-/*    max-width: 348px;*/
-/*    margin: auto;*/
-/*}*/
 
 .button_bookmarks {
     background: none;

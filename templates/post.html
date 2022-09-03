@@ -54,11 +54,12 @@
         <hr>
         </div>
         <div class="comments">
-            <b>Комментарии {{ count_comments }}:</b>
-            <div>
+            <b style="border: solid;">Комментарии {{ count_comments }}:</b><br>
+            <div >
                 {% for comment in comments %}
                     <b>{{ comment['commenter_name'] }}:</b>
-                    <span>{{ comment['comment'] }}</span>
+                    <span style="word-wrap: break-word;">{{ comment['comment'] }}</span>
+                    <br><hr style="margin: 0 0 0 0"><br>
                 {% endfor %}
             </div>
 

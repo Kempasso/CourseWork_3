@@ -30,7 +30,7 @@ def get_comments_by_post_id(post_id, path, all_posts):
         data = json.load(file_comments)
         comments = []
         for item in data:
-            if item['pk'] == post_id:
+            if item['post_id'] == post_id:
                 comments.append(item)
     return comments
 
