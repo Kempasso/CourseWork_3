@@ -11,46 +11,55 @@
 <body>
 <header>
     <div>
-      <a href="/" class="logo">
-          <h2 class="hh">SKYPROGRAM</h2>
-      </a>
+        <a href="/" class="logo">
+            <h2 class="hh">SKYPROGRAM</h2>
+        </a>
     </div>
 </header>
 
 <main class="container">
-    <section>
-        {% for post in bookmarks.values() %}
-            <div>
-                <div>
+    {% if bookmarks != {} %}
+        <section>
+            {% for post in bookmarks.values() %}
+                <div class="div_in_section">
                     <a href="/users/{{ post.poster_name }}" methods="get">
-                        <div>
-                            <img src="{{ post.poster_avatar }}" width="47" alt="" class="ava">
-                        </div>
-
-                        <span>
+                        <div class="poster_info">
+                            <img src="{{ post.poster_avatar }}" width="47" alt="" class="ava"
+                                 style="width: 47px; margin: auto"> <br>
+                            <span class="nickname">
                         {{ post.poster_name }}
-                    </span>
+                        </span>
+                        </div>
                     </a>
                 </div>
-                {#  Блок под картинку поста  #}
-                <a href=""> <img src="{{ post.pic }}" alt="" width="348"> </a>
-                <p> {{ post.content[0:30] }}... </p>
-                <div>
-                    <div>
-                        <img src="../static/img/eye.png" alt="" width="26">
-                        <span>{{ post.views_content }}</span>
-                    </div>
+                <div class="post_img">
+                    <img src="{{ post.pic }}" width="348" style="border-radius: 10px">
+                    <p> {{ post.content[0:30] }}... </p>
                 </div>
+
+
+                <div class="views_logo">
+                    <img src="../static/img/eye.png" alt="" width="26">
+                    <span>{{ post.views_count }}</span>
+                </div>
+
                 <div>
                     <a href="/posts/{{ post.pk }}" class="post_details"> Подробнее </a>
-                    <button type="button" class="button_bookmarks">
-                        <img src="../static/img/bookmark.png" alt="" width="24">
-                    </button>
+                    <form action="/" method="post" enctype="multipart/form-data">
+                        <button name="book" value="{{ post.pk }}" type="submit" class="button_bookmarks">
+                            <img src="../static/img/bookmark.png" alt="" width="24">
+                        </button>
+                    </form>
                 </div>
                 <hr>
-            </div>
-        {% endfor %}
-    </section>
+                </div>
+            {% endfor %}
+        </section>
+    {% else %}
+        <p>
+            <h2 style="text-align: center">У вас нет добавленных закладок</h2>
+        </p>
+    {% endif %}
 </main>
 
 

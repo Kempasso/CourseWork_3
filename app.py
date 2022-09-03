@@ -2,12 +2,11 @@ from flask import request, redirect, Flask
 
 from api.views import *
 from classes import Bookmarks
-from config import *
 from classes import Posts
+from config import *
 from utils import *
 
 app = Flask(__name__)
-
 
 app.register_blueprint(api_blueprint, url_prefix='/api')
 
@@ -34,7 +33,9 @@ def add_delete_bookmarks():
 
 @app.route('/posts/<int:post_id>', methods=['GET'])
 def search_by_id(post_id):
-    comments = get_comments_by_post_id(post_id, COMMENTS_PATH)
+    comments = get_comments_by_post_id(post_id, COMMENTS_PATH, Posts.all_posts)
+    if type(comments) == str:
+        return comments
     post = Posts.all_posts[post_id]
     post.views_count += 1
     return render_template('post.html', comments=comments, post=post, count_comments=len(comments))
@@ -50,6 +51,8 @@ def get_found_post():
 @app.route('/users/<user_name>', methods=['GET'])
 def get_user_posts(user_name):
     found_posts = get_posts_by_user(user_name, Posts.all_posts)
+    if type(found_posts) == str:
+        return f'{found_posts}'
     return render_template('user-feed.html', found_posts=found_posts)
 
 

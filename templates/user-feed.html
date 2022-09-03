@@ -5,51 +5,60 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SKYPROGRAM</title>
-    <link href="../static/css/style.css" rel="stylesheet">
+    <link type="text/css" href="../static/css/style.css" rel="stylesheet">
 </head>
-<div CLASS="container">SKYPROGRAM</div>
+
 <body>
 <header>
-
+    <div>
+        <a href="/" class="logo">
+            <h2 class="hh">SKYPROGRAM</h2>
+        </a>
+    </div>
 </header>
 
 <main class="container">
     {% if found_posts != [] %}
         <section>
-            {% for post in found_posts %}
-                <div>
-                    <div>
-                        <a href="">
-                            <div>
-                                <img src="{{ post.poster_avatar }}" width="47" alt="">
-                            </div>
-
-                            <span>
+            {% for post in found_posts[0:10] %}
+                <div class="div_in_section">
+                    <a href="/users/{{ post.poster_name }}" methods="get">
+                        <div class="poster_info">
+                            <img src="{{ post.poster_avatar }}" width="47" alt="" class="ava"
+                                 style="width: 47px; margin: auto"> <br>
+                            <span class="nickname">
                         {{ post.poster_name }}
-                    </span>
-                        </a>
-                    </div>
-                    {#  Блок под картинку поста  #}
-                    <a href=""> <img src="{{ post.pic }}" alt="" width="348"> </a>
-                    <p> {{ post.content[0:30] }}... </p>
-                    <div>
-                        <div>
-                            <img src="../static/img/eye.png" alt="" width="26">
-                            <span>{{ post.views_count }}</span>
+                        </span>
                         </div>
-                    </div>
-                    <div>
-                        <a href="/posts/{{ post.pk }}" class="post_details"> Подробнее </a>
-                        <button type="button" class="button_bookmarks">
+                    </a>
+                </div>
+                <div class="post_img">
+                    <img src="{{ post.pic }}" width="348" style="border-radius: 10px">
+                    <p> {{ post.content[0:30] }}... </p>
+                </div>
+
+
+                <div class="views_logo">
+                    <img src="../static/img/eye.png" alt="" width="26">
+                    <span>{{ post.views_count }}</span>
+                </div>
+
+                <div>
+                    <a href="/posts/{{ post.pk }}" class="post_details"> Подробнее </a>
+                    <form action="/" method="post" enctype="multipart/form-data">
+                        <button name="book" value="{{ post.pk }}" type="submit" class="button_bookmarks">
                             <img src="../static/img/bookmark.png" alt="" width="24">
                         </button>
-                    </div>
-                    <hr>
+                    </form>
+                </div>
+                <hr>
                 </div>
             {% endfor %}
         </section>
     {% else %}
-        <a>Ничего не найдено</a>
+        <p>
+            <h2 style="text-align: center">Ничего не найдено</h2>
+        </p>
     {% endif %}
 </main>
 

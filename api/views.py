@@ -1,11 +1,12 @@
 import json
-
-from flask import Blueprint, render_template, Flask
 import logging
+
+from flask import Blueprint, render_template
+
 from classes import Posts
+from config import *
 
 api_blueprint = Blueprint('api_blueprint', __name__, template_folder='templates_api')
-
 
 api_logger = logging.getLogger('api_logger')
 api_logger.setLevel(logging.INFO)
@@ -23,8 +24,6 @@ api_formatter = logging.Formatter(fmt=strfmt, datefmt=datefmt)
 api_handler.setFormatter(api_formatter)
 
 api_logger.addHandler(api_handler)
-
-POSTS_PATH = './data/posts.json'
 
 
 @api_blueprint.route('/posts')
