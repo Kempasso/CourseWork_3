@@ -1,4 +1,4 @@
-from flask import request, redirect, Flask
+from flask import request, redirect, Flask, render_template
 
 from api.views import *
 from config import *
