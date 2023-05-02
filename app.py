@@ -1,12 +1,16 @@
 from flask import request, redirect, Flask, render_template
+import os
+from flask_sqlalchemy import SQLAlchemy
 
 from api.views import *
 from config import *
+from repositories import create_tables
 from utils import *
-
 app = Flask(__name__)
+# app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:98944211@localhost:5432/FastAPI'
 app.register_blueprint(api_blueprint, url_prefix='/api')
 app.config['JSON_AS_ASCII'] = False
+
 
 all_posts = get_all_posts(POSTS_PATH)
 for i in all_posts:
@@ -70,4 +74,6 @@ def internal_error(error):
 
 
 if __name__ == "__main__":
-    app.run()
+    # app.run(host='127.0.0.1', port=8000)
+    create_tables()
+    app.run(debug=True, host=os.environ.get('DOCKER_HOST_IP', '0.0.0.0'), port=8000)

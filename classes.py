@@ -14,7 +14,7 @@ class Bookmarks:
 
 
 class Posts:
-    all_posts = {}
+    all_posts = dict()
 
     def __init__(self, poster_name, poster_avatar, pic, content, views_count, likes_count, pk):
         self.poster_name = poster_name
